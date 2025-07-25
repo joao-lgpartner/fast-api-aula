@@ -14,7 +14,7 @@ def create_new_book(user_id: int, book: BookCreate, db: Session = Depends(get_db
     except HTTPException as e:
         return HTTPException(status_code=e.status_code, detail=str(e))
     except Exception as e:
-        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, details=str(e))
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
 
 @router.get("", response_model=list[BookRead])
 def list_books(db: Session = Depends(get_db)):
@@ -23,7 +23,7 @@ def list_books(db: Session = Depends(get_db)):
     except HTTPException as e:
         return HTTPException(status_code=e.status_code, detail=str(e))
     except Exception as e:
-        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, details=str(e))
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
 
 @router.get("/{book_id}", response_model=BookRead)
 def get_book_by_id(book_id: int, db: Session = Depends(get_db)):
@@ -32,7 +32,7 @@ def get_book_by_id(book_id: int, db: Session = Depends(get_db)):
     except HTTPException as e:
         return HTTPException(status_code=e.status_code, detail=str(e))
     except Exception as e:
-        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, details=str(e))
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
     
 @router.put("/{book_id}", response_model=BookRead)
 def update_book_info(book_id: int, book: BookUpdate, db: Session = Depends(get_db)):
@@ -43,7 +43,7 @@ def update_book_info(book_id: int, book: BookUpdate, db: Session = Depends(get_d
     except HTTPException as e:
         return HTTPException(status_code=e.status_code, detail=str(e))
     except Exception as e:
-        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, details=str(e))
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
     
 @router.delete("/{book_id}")
 def delete_user_info(book_id: int, db: Session = Depends(get_db)):
@@ -54,4 +54,4 @@ def delete_user_info(book_id: int, db: Session = Depends(get_db)):
     except HTTPException as e:
         return HTTPException(status_code=e.status_code, detail=str(e))
     except Exception as e:
-        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, details=str(e))
+        return HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))

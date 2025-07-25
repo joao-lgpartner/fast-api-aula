@@ -10,7 +10,7 @@ def create_user(db: Session, user_data: UserCreate):
     return user
 
 def get_all_users(db: Session):
-    return db.query(User).all
+    return db.query(User).all()
 
 def get_user(db: Session, user_id: int):
     return db.query(User).filter(User.id == user_id).first()

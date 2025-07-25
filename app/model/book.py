@@ -9,6 +9,6 @@ class Book(Base):
     author: Mapped[str] = mapped_column(nullable=True)
     year: Mapped[int] = mapped_column(nullable=False)
     user_id: Mapped[int] = mapped_column(ForeignKey("user.id"))
-    user: Mapped["User"] = relationship(back_populates="book")
+    user: Mapped["User"] = relationship(back_populates="books")
     
 from app.model.user import User

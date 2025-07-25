@@ -1,6 +1,12 @@
 from fastapi import FastAPI
-from api.routes import router
+from app.api.routes import router
+from app.api.user_routes import router as user_router
+from app.api.book_routes import router as book_router
 
-app = FastAPI(title="Projeto X")
+app = FastAPI(title="My API")
+from app.db.database import Base, engine
 
-app.include_router(router=router, prefix='/api/v1', tags=["Hello"])
+Base.metadata.create_all(bind=engine)
+app.include_router(router=router)
+app.include_router(router=user_router, prefix="/api")
+app.include_router(router=book_router, prefix="/api")

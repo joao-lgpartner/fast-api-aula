@@ -1,6 +1,6 @@
 from pydantic import BaseModel, EmailStr
 from typing import List, Optional
-from book import BookRead
+from app.schemas.book import BookRead
 
 class UserBase(BaseModel):
     name: str

@@ -4,6 +4,7 @@ from typing import Optional
 class BookBase(BaseModel):
     title: str
     author: str
+    year: int
 
 class BookCreate(BookBase):
     pass
@@ -16,3 +17,4 @@ class BookRead(BookBase):
 class BookUpdate(BaseModel):
     title: Optional[str] = None
     author: Optional[str] = None
+    year: Optional[int] = None
